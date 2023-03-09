@@ -1,176 +1,53 @@
-import React, { useEffect, useState } from "react";
-import {
-  StyleSheet,
-  Button,
-  TextInput,
-  View,
-  Text,
-  FlatList,
-  Modal,
-  Pressable,
-} from "react-native";
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+
+import Header from './src/componentes/Header';
+import StartGameScreen from './src/screens/StartGameScreen';
+import GameScreen from './src/screens/GameScreen';
+
+SplashScreen.preventAutoHideAsync();
+
 
 export default function App() {
-  const [itemText, setItemText] = useState("");
-  const [items, setItems] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
 
-  const onChangeText = (text) => {
-    setItemText(text);
+  const [fontsLoaded] = useFonts({
+    'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
+    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+  });
+
+  React.useEffect(() =>{
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+
+  }, [fontsLoaded])
+
+  const [userNumber, setUserNumber] = React.useState();
+
+  const startGameHandler = (selectedNumber) => {
+    setUserNumber(selectedNumber);
   };
 
-  const addItemToState = () => {
-    setItems((oldArry) => [...oldArry, { id: Date.now(), value: itemText }]);
-    setItemText("");
-  };
-
-  const openModal = (item) => {
-    setSelectedItem(item);
-    setModalVisible(true);
-  };
-
-  const onCancelModal = () => {
-    setModalVisible(!modalVisible);
-  };
-
-  const onDeleteModal = (id) => {
-    setModalVisible(!modalVisible);
-    setItems((oldArry) => oldArry.filter((item) => item.id !== id));
-    setSelectedItem(null);
-  };
-
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
-    <View style={styles.screen}>
-      <View style={styles.addItemInputContainer}>
-        <TextInput
-          placeholder="Item de lista"
-          style={styles.input}
-          onChangeText={onChangeText}
-          value={itemText}
-        />
-        <Button title="Agregar" onPress={addItemToState} />
-      </View>
-      <FlatList
-        data={items}
-        renderItem={(itemData) => (
-          <Pressable
-            style={styles.itemContainer}
-            onPress={() => {
-              openModal(itemData.item);
-            }}
-          >
-            <Text style={styles.item}>{itemData.item.value}</Text>
-          </Pressable>
-        )}
-        keyExtractor={(item) => item.id.toString()}
-      />
-
-      <Modal animationType="slide" transparent={true} visible={modalVisible}>
-        <View style={styles.modalMainView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalTitle}>Eliminar Item</Text>
-            <Text style={styles.modalText}>
-              ¿Está seguro que desea eliminar el item{" "}
-              <Text style={styles.modalBoldText}>{selectedItem?.value}</Text>?
-            </Text>
-            <View style={styles.modalActions}>
-              <Pressable
-                style={[styles.button, styles.buttonCancel]}
-                onPress={onCancelModal}
-              >
-                <Text style={styles.textStyle}>Cancelar</Text>
-              </Pressable>
-              <Pressable
-                style={[styles.button, styles.buttonDelete]}
-                onPress={() => {
-                  onDeleteModal(selectedItem.id);
-                }}
-              >
-                <Text style={styles.textStyle}>Eliminar</Text>
-              </Pressable>
-            </View>
-          </View>
-        </View>
-      </Modal>
+    <View style={styles.container}>
+      <Header title="Adivina el numero" />
+      {
+        !userNumber
+          ? <StartGameScreen onStartGame={startGameHandler} />
+          : <GameScreen userOption={userNumber} />
+      }
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: {
-    padding: 30,
+  container: {
     flex: 1,
-  },
-  addItemInputContainer: {
-    marginTop: 30,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  input: {
-    width: 200,
-    borderBottomColor: "black",
-    borderBottomWidth: 1,
-  },
-  itemContainer: {
-    margin: 10,
-    padding: 10,
-    borderRadius: 5,
-    backgroundColor: "#ccc",
-  },
-  item: {
-    padding: 10,
-    textAlign: "center",
-  },
-  modalMainView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  modalTitle: {
-    padding: 10,
-    borderRadius: 5,
-    fontSize: 20,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
-  },
-  modalBoldText: {
-    fontWeight: "bold",
-    textDecorationLine: "underline",
-  },
-  modalActions: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    marginHorizontal: 10,
-  },
-  buttonCancel: {
-    backgroundColor: "#2196F3",
-  },
-  buttonDelete: {
-    backgroundColor: "#f44336",
   },
 });
