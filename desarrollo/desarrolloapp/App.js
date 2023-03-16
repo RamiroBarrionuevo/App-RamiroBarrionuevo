@@ -1,53 +1,29 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-
-import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import {useFonts, OpenSans_400Regular, OpenSans_700Bold} from '@expo-google-fonts/open-sans';
 
-import Header from './src/componentes/Header';
-import StartGameScreen from './src/screens/StartGameScreen';
-import GameScreen from './src/screens/GameScreen';
+import ShopNavigator from './src/navigators/ShopNavigators';
 
 SplashScreen.preventAutoHideAsync();
-
 
 export default function App() {
 
   const [fontsLoaded] = useFonts({
-    'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
-    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+    OpenSans_400Regular,
+    OpenSans_700Bold
   });
 
   React.useEffect(() =>{
-    if (fontsLoaded) {
+    if(fontsLoaded){
       SplashScreen.hideAsync();
     }
-
   }, [fontsLoaded])
 
-  const [userNumber, setUserNumber] = React.useState();
-
-  const startGameHandler = (selectedNumber) => {
-    setUserNumber(selectedNumber);
-  };
-
-  if (!fontsLoaded) {
+  if(!fontsLoaded){
     return null;
   }
+
   return (
-    <View style={styles.container}>
-      <Header title="Adivina el numero" />
-      {
-        !userNumber
-          ? <StartGameScreen onStartGame={startGameHandler} />
-          : <GameScreen userOption={userNumber} />
-      }
-    </View>
+    <ShopNavigator />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
