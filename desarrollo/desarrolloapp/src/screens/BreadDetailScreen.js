@@ -16,6 +16,7 @@ const BreadDetailScreen = ({ route, navigation}) => {
     <View style={styles.screen}>
       <Text style={styles.title}>{bread.name}</Text>
       <Text>Price: ${bread.price}</Text>
+      <Text>{bread.weight}</Text>
       <Text>{bread.description}</Text>
     </View>
   )

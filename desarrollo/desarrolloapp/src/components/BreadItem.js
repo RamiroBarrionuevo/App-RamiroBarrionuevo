@@ -11,7 +11,7 @@ const BreadItem = ({ item, onSelected }) => {
                 </View>
                 <View>
                     <Text style={styles.details} > $ {item.price}</Text>
-                    
+                    <Text style={styles.details}>{item.weight}</Text>
                 </View>
             </View>
         </TouchableOpacity>
