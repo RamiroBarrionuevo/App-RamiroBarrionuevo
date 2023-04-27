@@ -1,17 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import TabsNavigator from './TabsNavigator'
-
+import TabNavigator from './TabsNavigator';
+import AuthNavigator from './Auth.navigator';
+import { useSelector } from 'react-redux';
 
 const MainNavigator = () => {
+
+  const isAuth = useSelector(state => state.auth.userId);
+
   return (
     <NavigationContainer>
-        <TabsNavigator />
+      {isAuth ? <TabNavigator /> : <AuthNavigator />}
     </NavigationContainer>
-  )
+  );
 }
 
-export default MainNavigator
-
-const styles = StyleSheet.create({})
+export default MainNavigator;

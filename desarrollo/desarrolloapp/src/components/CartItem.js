@@ -1,21 +1,25 @@
-import { StyleSheet, Text, TouchableOpacity, View  } from 'react-native';
+import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import React from 'react'
-import { Ionicons } from '@expo/vector-icons'
+import Ionicons from '@expo/vector-icons/Ionicons';
+import {COLORS} from '../constantes/Colors';
 
-const CartItem  = ({item, onDelete}) => {
-    return(
-        <View style={styles.item}>
-            <Text style={styles.header}>{item.name}</Text>
-            <View style={styles.detail}>
-                <Text style={styles.text}>${item.price}</Text>
-                <Text style={styles.text}>x{item.quantity}</Text>
+const CartItem = ({item,onDelete}) => {
+  return (
+    <View style={styles.item}>
+        <View>
+            <Text style={styles.header}>{item.title}</Text>
+        </View>
+        <View style={styles.detail}>
+            <View>
+                <Text>Cantidad: {item.quantity}</Text>
+                <Text>{item.price}</Text>
             </View>
-            <TouchableOpacity onPress={() => onDelete(item)}>
-                <Ionicons name="md-trash" size={24} color="red"/>
+            <TouchableOpacity onPress={()=>onDelete(item.id)}>
+                <Ionicons name="trash" size={24} color={COLORS.accent} />
             </TouchableOpacity>
         </View>
-            
-    )
+    </View>
+  )
 }
 
 export default CartItem
@@ -23,23 +27,24 @@ export default CartItem
 const styles = StyleSheet.create({
     item:{
         flex:1,
-        padding: 8,
+        padding:8,
         borderBottomWidth:1,
-        borderBottomColor:'#ccc',
+        borderBottomColor: '#ccc'
     },
     header:{
         fontSize:18,
-        fontFamily:'OpenSans_700Bold',
+        fontFamily: 'OpenSans_700Bold',
     },
     detail:{
-        flex: 1,
+        flex:1,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        alignItems:'center',
+        alignItems: 'center',
         justifyContent: 'space-between'
     },
-    text:{
+    text: {
         fontSize:16,
-        fontFamily:'OpenSans',
-    },
-});
+        fontFamily:'OpenSans_400Regular'
+    }
+
+})
