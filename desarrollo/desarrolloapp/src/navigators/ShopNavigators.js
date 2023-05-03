@@ -6,7 +6,7 @@ import { Platform } from 'react-native'
 import CategoriesScreen from '../screens/CategoriesScreen'
 import CategoryBreadScreen from '../screens/CategoryBreadScreen'
 import BreadDetailScreen from '../screens/BreadDetailScreen'
-import {COLORS} from '../constantes/Colors'
+import {colors} from '../constants/Colors'
 
 const Stack = createNativeStackNavigator();
 
@@ -16,8 +16,8 @@ const ShopNavigator = () => {
         <Stack.Navigator 
             initialRouteName="Home"
                 options={{
-                    headerStyle: {backgroundColor: Platform.OS === "android" ? COLORS.primary : ""},
-                    headerTintColor: Platform.OS === "android" ? "white" : COLORS.primary,
+                    headerStyle: {backgroundColor: Platform.OS === "android" ? colors.primary : ""},
+                    headerTintColor: Platform.OS === "android" ? "white" : colors.primary,
                     headerTitleStyle: {fontWeight: "Bold"},
                 }}
             >

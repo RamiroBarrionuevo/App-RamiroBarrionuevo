@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import TabNavigator from './TabsNavigator';
+import TabNavigator from './TabNavigator';
 import AuthNavigator from './Auth.navigator';
 import { useSelector } from 'react-redux';
 

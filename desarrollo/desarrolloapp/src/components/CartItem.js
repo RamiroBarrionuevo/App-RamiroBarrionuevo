@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
-import {COLORS} from '../constantes/Colors';
+import {COLORS} from '../constants/Colors';
 
 const CartItem = ({item,onDelete}) => {
   return (

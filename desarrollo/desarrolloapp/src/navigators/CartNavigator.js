@@ -2,7 +2,7 @@ import { Platform} from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import CartScreen from '../screens/CartScreen'
-import {COLORS} from '../constantes/Colors'
+import {colors}from '../constants/Colors'
 
 const Stack = createNativeStackNavigator();
 
@@ -11,8 +11,8 @@ const CartNavigator = () => {
         <Stack.Navigator
             initialRouteName='Cart'
             screenOptions={{
-                headerStyle: {backgroundColor: Platform.OS === 'android' ? COLORS.primary : ''},
-                headerTintColor: Platform.OS === 'android' ? 'white' : COLORS.primary,
+                headerStyle: {backgroundColor: Platform.OS === 'android' ? colors.primary : ''},
+                headerTintColor: Platform.OS === 'android' ? 'white' : colors.primary,
                 headerTitleStyle: {fontWeight: 'bold'}
             }}
         >   

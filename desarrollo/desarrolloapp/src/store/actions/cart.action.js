@@ -1,4 +1,5 @@
-import { API_URL } from '../../constantes/DataBase';
+
+import { API_URL } from '../../constants/DataBase';
 
 export const ADD_ITEM = 'ADD_ITEM';
 export const REMOVE_ITEM = 'REMOVE_ITEM';

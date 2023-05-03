@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
-import {COLORS} from '../constantes/Colors';
+import {colors} from '../constants/Colors';
 
 const formatDay = (time) => {
     const date= new Date(time)
@@ -17,7 +17,7 @@ const OrderItem = ({item,onDelete}) => {
         </View>
         <View style={styles.actions}>
             <TouchableOpacity onPress={()=> onDelete(item.id)}>
-                <Ionicons name="md-trash" size={22} color={COLORS.primary} />
+                <Ionicons name="md-trash" size={22} color={colors.primary} />
             </TouchableOpacity>
         </View>
     </View>
