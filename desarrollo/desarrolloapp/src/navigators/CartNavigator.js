@@ -2,7 +2,7 @@ import { Platform} from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import CartScreen from '../screens/CartScreen'
-import {colors}from '../constants/Colors'
+import {colors} from '../constants/Colors'
 
 const Stack = createNativeStackNavigator();
 

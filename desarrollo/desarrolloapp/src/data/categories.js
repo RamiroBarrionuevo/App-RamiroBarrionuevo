@@ -1,12 +1,12 @@
 export const CATEGORIES = [
     {
-        id: '1',
+        id: 1,
         title: 'Hamburguesas',
-        color: '#f5428d'
+        color: '#ff3c00',
     },
     {
-        id: '2',
+        id: 2,
         title: 'Pizzas',
-        color: '#f54242'
-    }
+        color: '#ffcc00',
+    },
 ]

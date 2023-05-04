@@ -1,18 +1,20 @@
 export const CART = [
-    {
-      id: 1,
-      category: 1,
-      title: "McForno",
-      description: "Pan de papa, medallon de 120grs, doble feta de cheddar,panceta ahumada,aderezo",
-      price: 1200,
-      quantity: 2,
-    },
-    {
-      id: 5,
-      category: 2,
-      title: "Muzzarella",
-      description: "salsa de tomate,queso muzzarella y oregano",
-      price: 3300,
-      quantity: 2,
-    },
-  ];
+  {
+    id: 1,
+    category: 1,
+    title: "Pan Bagguette",
+    description: "clasico pan frances",
+    weight: "350gr",
+    price: 1600,
+    quantity: 2,
+  },
+  {
+    id: 2,
+    category: 1,
+    title: "Pan de molde integral de centeno",
+    description: "Pídelo entero o tajado, con o sin semillas",
+    weight: "900gr",
+    price: 3300,
+    quantity: 2,
+  },
+];

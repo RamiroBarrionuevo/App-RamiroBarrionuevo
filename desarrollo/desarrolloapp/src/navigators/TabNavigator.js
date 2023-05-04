@@ -4,7 +4,8 @@ import { StyleSheet,View,Text } from 'react-native'
 import ShopNavigator from './ShopNavigators'
 import CartNavigator from './CartNavigator'
 import Ionicons from '@expo/vector-icons/Ionicons';
-import OrdersScreen from '../screens/OrdersScreen'
+import OrdersScreen from '../screens/OrdersScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 
 
 const BottomTabs = createBottomTabNavigator();
@@ -43,6 +44,19 @@ const TabNavigator = () => {
             )
           }}
           />
+          <BottomTabs.Screen
+        name="UserProfile"
+        component={ProfileScreen}
+        options={{
+          title: "My Profile",
+          tabBarIcon: ({ color, size }) => (
+            <View style={styles.item}>
+                <Ionicons name="person-circle-outline" size={24} color="black" />
+                <Text>Perfil</Text>
+              </View>
+          )
+        }}
+      />
           <BottomTabs.Screen 
           name="OrdersTab" 
           component={OrdersScreen}

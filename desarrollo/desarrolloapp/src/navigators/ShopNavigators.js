@@ -25,7 +25,7 @@ const ShopNavigator = () => {
                     name="Home" 
                     component={CategoriesScreen}
                     options= {{
-                        title: "Mi pan"
+                        title: "Alforno"
                     }}
                     />
                 <Stack.Screen 

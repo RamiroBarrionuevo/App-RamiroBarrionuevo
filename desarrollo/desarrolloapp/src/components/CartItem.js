@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
-import {COLORS} from '../constants/Colors';
+import {colors} from '../constants/Colors';
 
 const CartItem = ({item,onDelete}) => {
   return (
@@ -15,7 +15,7 @@ const CartItem = ({item,onDelete}) => {
                 <Text>{item.price}</Text>
             </View>
             <TouchableOpacity onPress={()=>onDelete(item.id)}>
-                <Ionicons name="trash" size={24} color={COLORS.accent} />
+                <Ionicons name="trash" size={24} color={colors.accent} />
             </TouchableOpacity>
         </View>
     </View>
