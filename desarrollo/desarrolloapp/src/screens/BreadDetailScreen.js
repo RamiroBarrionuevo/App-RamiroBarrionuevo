@@ -1,6 +1,5 @@
 import { Button, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-//import { BREADS } from '../data/products'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { addItem } from '../store/actions/cart.action'

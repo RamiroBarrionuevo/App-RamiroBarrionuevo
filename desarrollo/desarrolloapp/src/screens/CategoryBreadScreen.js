@@ -11,7 +11,6 @@ const CategoryBreadScreen = ({ navigation, route }) => {
     const categoryBreads = useSelector(state=>state.breads.filteredBreads)
     const dispatch = useDispatch()
     const category = useSelector(state=>state.categories.selected)
-    //console.log(category)
 
     useEffect(()=>{
         dispatch(filterBreads(category.id))
@@ -20,7 +19,6 @@ const CategoryBreadScreen = ({ navigation, route }) => {
     const onHandleSelectedBread = (item)=>{
         dispatch(selectBread(item.id))
         navigation.navigate('Detail',{
-            //productId:item.id,
             name:item.title,
         })
     }
